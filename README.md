@@ -93,14 +93,14 @@ Compared  to the original Voxposer implementation, the following files have been
 
 
 1. Hardware Interaction Modules
-- '''Realsense.py''':  Handles initialization of the RealSense D435 cameras, object  recognition, and fusion of point cloud data from multiple sources.
-- '''Realenv.py''': Implements the real-world experiment environment, replacing the '''rlbench_env''' from Voxposer. This module provides the primary interface for controlling the Mercury A1 robotic arm's motion.
+- ```Realsense.py```:  Handles initialization of the RealSense D435 cameras, object  recognition, and fusion of point cloud data from multiple sources.
+- ```Realenv.py```: Implements the real-world experiment environment, replacing the ```rlbench_env``` from Voxposer. This module provides the primary interface for controlling the Mercury A1 robotic arm's motion.
 2. LLM Prompt Files
 
   
-The  prompts for the LLM (Large Language Model) have been updated to  integrate new functionalities for grasp pose generation, rotation planning, and visual feedback. The modified files include:
-- '''composer_prompt.txt''': Major modifications to incorporate visual feedback mechanisms.
--'''affordance_map_prompt.txt''': Updated to refine the definition and selection of grasping targets.
-- '''rotation_map_prompt.txt''': Modified to adjust the criteria for generating grasping orientations.
-- '''parse_query_obj_prompt.txt''': Updated for loading and interpreting the grasp poses of target objects.
-- '''get_gripper_map_prompt.txt''': Adjusted to specify the gripper closure goals and actions.
+The  prompts for the LLM (Large Language Model) have been updated to integrate new functionalities for grasp pose generation, rotation planning, and visual feedback. The modified files include:
+- ```composer_prompt.txt```: Major modifications to incorporate visual feedback mechanisms.
+- ```affordance_map_prompt.txt```: Updated to refine the definition and selection of grasping targets.
+- ```rotation_map_prompt.txt```: Modified to adjust the criteria for generating grasping orientations.
+- ```parse_query_obj_prompt.txt```: Updated for loading and interpreting the grasp poses of target objects.
+- ```get_gripper_map_prompt.txt```: Adjusted to specify the gripper closure goals and actions.
