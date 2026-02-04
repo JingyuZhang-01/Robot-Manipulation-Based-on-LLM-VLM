@@ -7,6 +7,7 @@ Building on the Voxposer framework, this project introduces GraspNet-based grasp
 - [Software Environment Setup](#Software_Environment_Setup)
 - [Running the Experiment](#Running_Experiment)
 - [Code Structure](#Code_Structure)
+- [Acknowledgments](#Acknowledgments)
 
 # Environment Setup
 This project involves a physical experiment setup with no simulation component.
