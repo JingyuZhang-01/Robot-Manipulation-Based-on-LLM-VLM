@@ -40,7 +40,9 @@ conda activate Realenv
 pip install -r requirements.txt
 ```
 - Obtain an [OpenAI API](https://www.aliyun.com/product/tongyi) key, and put it inside the first cell of ```runmain.py```.
--Because  GraspNet relies on older libraries that are incompatible with the  PyTorch version required by SAM 2, it needs to be installed in another Conda environment
+
+
+Because  GraspNet relies on older libraries that are incompatible with the  PyTorch version required by SAM 2, it needs to be installed in another Conda environment
 - Create a second Conda environment:
 ```bash
 conda create -n graspnet python=3.9
@@ -53,11 +55,15 @@ Then, install Graspnet according to its requirements within this environment.
 1 Robotic Arm Connection via Socket
 
 Establish a remote socket connection between the host machine and the Mercury A1 robotic arm.
-- On the Mercury A1 side (Robotic Arm Controller):
+
+
+On the Mercury A1 side (Robotic Arm Controller):
 ```bash
 python server_A1_close_loop.py
 ```
 2 Running on the Host Machine
+
+
 Two separate Conda environments need to be active, each running a specific process.
 -In the RealEnv environment:
 Run the main execution script:
