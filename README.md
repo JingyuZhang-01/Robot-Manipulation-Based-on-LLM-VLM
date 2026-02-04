@@ -8,7 +8,7 @@ Building on the Voxposer framework, this project introduces GraspNet-based grasp
 - [Running the Experiment](#Running_Experiment)
 - [Code Structure](#Code_Structure)
 
-# Environment_Setup
+# Environment Setup
 This project involves a physical experiment setup with no simulation component.
 - Cameras: Two Intel RealSense D435 cameras, positioned in front of the robotic arm.
 - Robotic Arm: One Mercury A1 (7-DOF) robotic arm.
@@ -18,7 +18,7 @@ The hardware installation layout is as shown in the figure below.
 ---
 
 
-# Project_Overview
+# Project Overview
 The project structure is inspired by Voxposer, but implements significant modifications:
 - Different AI Models: Replaces the original LLM (Large Language Model) and VLM (Vision Language Model) components.
 - Core Technologies Used:
@@ -28,7 +28,7 @@ The project structure is inspired by Voxposer, but implements significant modifi
   - GraspNet for robotic grasp pose generation.
 
 
-# Software_Environment_Setup
+# Software Environment Setup
 -  Create the first conda environment:
 ```bash
 conda create -n Realenv python=3.9
@@ -51,7 +51,7 @@ conda activate graspnet
 Then, install Graspnet according to its requirements within this environment.
 
 
-# Running_Experiment
+# Running Experiment
 1 Robotic Arm Connection via Socket
 
 Establish a remote socket connection between the host machine and the Mercury A1 robotic arm.
@@ -104,3 +104,8 @@ The  prompts for the LLM (Large Language Model) have been updated to integrate n
 - ```rotation_map_prompt.txt```: Modified to adjust the criteria for generating grasping orientations.
 - ```parse_query_obj_prompt.txt```: Updated for loading and interpreting the grasp poses of target objects.
 - ```get_gripper_map_prompt.txt```: Adjusted to specify the gripper closure goals and actions.
+
+
+# Acknowledgments
+- The system architecture is based on [Voxposer](https://github.com/huangwl18/VoxPoser).
+- Implementation of Language Model Programs (LMPs) is based on [Code as Policies](https://code-as-policies.github.io/).
