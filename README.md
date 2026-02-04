@@ -4,11 +4,12 @@ Building on the Voxposer framework, this project introduces GraspNet-based grasp
 # 目录
 - [Environment Setup](#Environment_setup)
 - [Project Overview](#Project_Overview)
-- [sim2sim](#sim2sim)
+- [Software Environment Setup](#Software_Environment_Setup)
+- [Running the Experiment](#Running_Experiment)
+- 
 
 # Environment_Setup
 This project involves a physical experiment setup with no simulation component.
-1. Hardware Setup
 - Cameras: Two Intel RealSense D435 cameras, positioned in front of the robotic arm.
 - Robotic Arm: One Mercury A1 (7-DOF) robotic arm.
 - Gripper: One robotic gripper.
@@ -25,22 +26,55 @@ The project structure is inspired by Voxposer, but implements significant modifi
   - Grounding DINO for open-vocabulary object detection.
   - SAM 2 (Segment Anything Model 2) for high-performance image segmentation.
   - GraspNet for robotic grasp pose generation.
-3. Software Environment Setup
-```bash
+
+
+# Software_Environment_Setup
 -  Create the first conda environment:
+```bash
 conda create -n Realenv python=3.9
 conda activate Realenv
 ```
-- See Instructions to install GroundingDINO and SAM2 (Note: install these inside the created conda environment).
+- See Instructions to install [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO) and [SAM2](https://github.com/facebookresearch/sam2) (Note: install these inside the created conda environment).
 - Install other dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-- Obtain an OpenAI API key, and put it inside the first cell of runmain.py.
-Because  GraspNet relies on older libraries that are incompatible with the  PyTorch version required by SAM 2, it needs to be installed in another Conda environment
+- Obtain an [OpenAI API](https://www.aliyun.com/product/tongyi) key, and put it inside the first cell of ```runmain.py```.
+-Because  GraspNet relies on older libraries that are incompatible with the  PyTorch version required by SAM 2, it needs to be installed in another Conda environment
 - Create a second Conda environment:
 ```bash
 conda create -n graspnet python=3.9
 conda activate graspnet
 ```
 Then, install Graspnet according to its requirements within this environment.
+
+
+# Running_Experiment
+1 Robotic Arm Connection via Socket
+
+Establish a remote socket connection between the host machine and the Mercury A1 robotic arm.
+- On the Mercury A1 side (Robotic Arm Controller):
+```bash
+python server_A1_close_loop.py
+```
+2 Running on the Host Machine
+Two separate Conda environments need to be active, each running a specific process.
+-In the RealEnv environment:
+Run the main execution script:
+```bash
+conda activate RealEnv
+python runmain.py
+```
+-In the graspnet environment:
+Run the GraspNet inference script:
+```bash
+conda activate graspnet
+python grasp_github.py
+```
+3 Data Flow & Paths
+- runmain.py automatically saves the latest detected target object information in:
+  - /data/left/
+  - /data/right/
+- Note:  The system selects the camera data (left or right) based on point cloud  density to avoid occlusion and ensure accurate grasp pose generation.
+- grasp_github.py generates and saves the latest grasp poses in:
+  - /data/grasp/
