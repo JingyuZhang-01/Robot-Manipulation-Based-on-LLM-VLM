@@ -6,7 +6,7 @@ Building on the Voxposer framework, this project introduces GraspNet-based grasp
 - [Project Overview](#Project_Overview)
 - [Software Environment Setup](#Software_Environment_Setup)
 - [Running the Experiment](#Running_Experiment)
-- 
+- [Code Structure](#Code_Structure)
 
 # Environment_Setup
 This project involves a physical experiment setup with no simulation component.
@@ -65,14 +65,13 @@ python server_A1_close_loop.py
 
 
 Two separate Conda environments need to be active, each running a specific process.
--In the RealEnv environment:
-Run the main execution script:
+- In the RealEnv environment:
 ```bash
 conda activate RealEnv
 python runmain.py
 ```
--In the graspnet environment:
-Run the GraspNet inference script:
+- In the graspnet environment:
+
 ```bash
 conda activate graspnet
 python grasp_github.py
@@ -81,6 +80,27 @@ python grasp_github.py
 - runmain.py automatically saves the latest detected target object information in:
   - /data/left/
   - /data/right/
-- Note:  The system selects the camera data (left or right) based on point cloud  density to avoid occlusion and ensure accurate grasp pose generation.
+
+
+Note:  The system selects the camera data (left or right) based on point cloud  density to avoid occlusion and ensure accurate grasp pose generation.
 - grasp_github.py generates and saves the latest grasp poses in:
   - /data/grasp/
+ 
+
+
+# Code Structure 
+Compared  to the original Voxposer implementation, the following files have been  significantly modified or newly added to adapt the system to real-world  experiments:
+
+
+1. Hardware Interaction Modules
+- '''Realsense.py''':  Handles initialization of the RealSense D435 cameras, object  recognition, and fusion of point cloud data from multiple sources.
+- '''Realenv.py''': Implements the real-world experiment environment, replacing the '''rlbench_env''' from Voxposer. This module provides the primary interface for controlling the Mercury A1 robotic arm's motion.
+2. LLM Prompt Files
+
+  
+The  prompts for the LLM (Large Language Model) have been updated to  integrate new functionalities for grasp pose generation, rotation planning, and visual feedback. The modified files include:
+- '''composer_prompt.txt''': Major modifications to incorporate visual feedback mechanisms.
+-'''affordance_map_prompt.txt''': Updated to refine the definition and selection of grasping targets.
+- '''rotation_map_prompt.txt''': Modified to adjust the criteria for generating grasping orientations.
+- '''parse_query_obj_prompt.txt''': Updated for loading and interpreting the grasp poses of target objects.
+- '''get_gripper_map_prompt.txt''': Adjusted to specify the gripper closure goals and actions.
