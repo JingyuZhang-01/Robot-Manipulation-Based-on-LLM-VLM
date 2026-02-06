@@ -2,7 +2,7 @@
 
 
 Building on the Voxposer framework, this project introduces GraspNet-based grasp pose generation and integrates visual feedback with rotation planning. The implemented system was ultimately tested and validated on the Mercury A1 robotic arm from Elephant Company.
-![video](https://github.com/JingyuZhang-01/Robot-Manipulation-Based-on-LLM-VLM/media/2.mp4)
+
 
 
 https://github.com/user-attachments/assets/f60252c8-516a-45fc-b8b3-9da5d9a0b0af
@@ -23,7 +23,7 @@ This project involves a physical experiment setup with no simulation component.
 - Robotic Arm: One Mercury A1 (7-DOF) robotic arm.
 - Gripper: One robotic gripper.
 The hardware installation layout is as shown in the figure below.
-![harnware](https://github.com/JingyuZhang-01/Robot-Manipulation-Based-on-LLM-VLM/media/1.jpeg)
+
 ![1](https://github.com/user-attachments/assets/43dac6ba-e191-4a6b-8d07-135e1e7ded51)
 
 ---
