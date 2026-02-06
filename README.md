@@ -120,3 +120,4 @@ The  prompts for the LLM (Large Language Model) have been updated to integrate n
 # Acknowledgments
 - The system architecture is based on [Voxposer](https://github.com/huangwl18/VoxPoser).
 - Implementation of Language Model Programs (LMPs) is based on [Code as Policies](https://code-as-policies.github.io/).
+- Hand-Eye Calibration is based on [hand_eye_calibration](https://github.com/RealManRobot/hand_eye_calibration).
